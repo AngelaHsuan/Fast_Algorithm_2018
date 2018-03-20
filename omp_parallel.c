@@ -4,6 +4,9 @@
 #include <math.h>
 #include <time.h>
 
+
+//½sÄ¶¾¹¿ï¶µ-> -fopenmp
+
 int main()
 {
 	int i, j, N=100000000;
@@ -15,16 +18,19 @@ int main()
 	{
 		printf("Hello world (%d,%d,%f) \n",omp_get_thread_num(),omp_get_num_threads(),omp_get_wtime()-ot1);
 		printf("Hello Program\n");
+	
 	}
+	
 	
 	#pragma omp parallel for 
 	for(i=0;i<10;++i)
 	{
-		j = i;
+		j = i;		//j=0, j=1, j=2, ...,j=9
 		printf("%d %d\n",i,omp_get_thread_num());
 	}
 	printf("j = %d\n",j);
 	
+	/*
 	j = 0;
 	for(i=0;i<=10;++i)
 	{
@@ -62,5 +68,6 @@ int main()
 	printf("a = %f, b = %f\n", a, b);
 	printf("parallel time:%f\n",(t2-t1)/(double) CLOCKS_PER_SEC);
 	
+	*/
 	return 0;
 }
